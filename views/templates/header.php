@@ -86,12 +86,21 @@
                             </a> -->
                             <a href="<?php echo BASE_URL . 'carreras'; ?>" class="dropdown-item">
                                 <i class="fas fa-graduation-cap me-2"></i> Carreras
-                            </a>                           
-                            <a href="<?php echo BASE_URL . 'admin/datos'; ?>" class="dropdown-item">
-                                <i class="bx bx-right-arrow-alt me-2"></i> Productos
-                            </a>                           
+                            </a>           
                         </div>
                     </div>
+
+                    <!-- modulo comparsas -->
+
+                     <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Comparsas</a>
+                        <div class="me-2 dropdown-menu bg-transparent border-0">
+                             <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
+                                <i class="fas fa-graduation-cap me-2"></i> Cats. de Danza
+                            </a>                                             
+                        </div>
+                    </div>
+
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Clientes</a>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Proveedores</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Cajas</a>
