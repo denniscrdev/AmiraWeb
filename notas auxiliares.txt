@@ -10,3 +10,5 @@ git amira commit -m "Se completó la funcionalidad de login de usuarios"
 
 # Sube tus cambios para sincronizar
 git amira push
+
+ALTER TABLE nombre_tabla AUTO_INCREMENT = 1;

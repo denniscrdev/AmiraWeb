@@ -98,6 +98,9 @@
                              <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
                                 <i class="fas fa-graduation-cap me-2"></i> Cats. de Danza
                             </a>                                             
+                             <a href="<?php echo BASE_URL . 'rol_por_cat'; ?>" class="dropdown-item">
+                                <i class="fas fa-graduation-cap me-2"></i> Roles por Cat.
+                            </a>                                             
                         </div>
                     </div>
 
