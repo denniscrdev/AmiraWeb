@@ -10,7 +10,7 @@ class Rol_por_cat extends Controller
     {
         $data['title'] = 'Rol x Danza';
         $data['script'] = 'rol_por_cat.js';
-        $data['categorias'] = $this->model->getdatos('categorias_danza');
+        $data['categorias'] = $this->model->getDatos('categorias_danza');
         $this->views->getView('rol_por_cat', 'index', $data);
     }
 
@@ -34,36 +34,42 @@ class Rol_por_cat extends Controller
         $id_categoria = strClean($_POST['id_categoria']);
         $nombre = strClean($_POST['nombre']);
         $descripcion = strClean($_POST['descripcion']);
-        $max_integrantes = strClean($_POST['max_integrantes']);
+        $max_integrantes = (int) strClean($_POST['max_integrantes']);
         $mensaje = strClean($_POST['mensaje']);
 
-        if (empty($id_categoria) || empty($nombre)) {
+        if (empty($id_categoria) || empty($nombre) || empty($max_integrantes)) {
             $res = array('msg' => 'TODOS LOS CAMPOS CON * SON OBLIGATORIOS', 'type' => 'warning');
         } else {
-            if ($id == '') {
-                // Nuevo registro
-                $verificar = $this->model->getValidar('nombre', $nombre, 'registrar', 0);
-                if (empty($verificar)) {
-                    $data = $this->model->registrar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje);
-                    $res = ($data > 0)
-                        ? array('msg' => 'ROL REGISTRADO', 'type' => 'success')
-                        : array('msg' => 'ERROR AL REGISTRAR', 'type' => 'error');
-                } else {
-                    $res = array('msg' => 'EL ROL YA EXISTE', 'type' => 'warning');
-                }
+            // Validar capacidad disponible
+            $disponible = $this->model->getCapacidadDisponible($id_categoria, ($id == '' ? 0 : $id));
+            if ($max_integrantes > $disponible) {
+                $res = array(
+                    'msg' => "No puedes registrar este rol. Capacidad disponible en la categoría: $disponible",
+                    'type' => 'warning'
+                );
             } else {
-                // Actualizar registro
-                $verificar = $this->model->getValidar('nombre', $nombre, 'actualizar', $id);
-                if (empty($verificar)) {
-                    $data = $this->model->actualizar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje, $id);
-                    if ($data == 1) {
-
-                        $res = array('msg' => 'ROL MODIFICADO', 'type' => 'success');
+                if ($id == '') {
+                    // Nuevo registro
+                    $verificar = $this->model->getValidar($nombre, $id_categoria, 'registrar', 0);
+                    if (empty($verificar)) {
+                        $data = $this->model->registrar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje);
+                        $res = ($data > 0)
+                            ? array('msg' => 'ROL REGISTRADO', 'type' => 'success')
+                            : array('msg' => 'ERROR AL REGISTRAR', 'type' => 'error');
                     } else {
-                        $res = array('msg' => 'ERROR AL MODIFICAR', 'type' => 'error');
+                        $res = array('msg' => 'EL ROL YA EXISTE EN ESTA CATEGORÍA', 'type' => 'warning');
                     }
                 } else {
-                    $res = array('msg' => 'EL ROL YA EXISTE', 'type' => 'warning');
+                    // Actualizar registro
+                    $verificar = $this->model->getValidar($nombre, $id_categoria, 'actualizar', $id);
+                    if (empty($verificar)) {
+                        $data = $this->model->actualizar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje, $id);
+                        $res = ($data == 1)
+                            ? array('msg' => 'ROL MODIFICADO', 'type' => 'success')
+                            : array('msg' => 'ERROR AL MODIFICAR', 'type' => 'error');
+                    } else {
+                        $res = array('msg' => 'EL ROL YA EXISTE EN ESTA CATEGORÍA', 'type' => 'warning');
+                    }
                 }
             }
         }
@@ -75,17 +81,11 @@ class Rol_por_cat extends Controller
     // Eliminar (cambio de estado)
     public function eliminar($idRol_por_cat)
     {
-        if (isset($_GET)) {
-            if (is_numeric($idRol_por_cat)) {
-                $data = $this->model->eliminar(0, $idRol_por_cat);
-                if ($data == 1) {
-                    $res = array('msg' => 'MEDIDA DADO DE BAJA', 'type' => 'success');
-                } else {
-                    $res = array('msg' => 'ERROR AL ELIMINAR', 'type' => 'error');
-                }
-            } else {
-                $res = array('msg' => 'ERROR DESCONOCIDO', 'type' => 'error');
-            }
+        if (is_numeric($idRol_por_cat)) {
+            $data = $this->model->eliminar(0, $idRol_por_cat);
+            $res = ($data == 1)
+                ? array('msg' => 'ROL DADO DE BAJA', 'type' => 'success')
+                : array('msg' => 'ERROR AL ELIMINAR', 'type' => 'error');
         } else {
             $res = array('msg' => 'ERROR DESCONOCIDO', 'type' => 'error');
         }
@@ -100,41 +100,36 @@ class Rol_por_cat extends Controller
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         die();
     }
-    //  roles inactivas
+
+    //  roles inactivos
     public function inactivos()
     {
-        $data['title'] = 'Rol inactivos';
+        $data['title'] = 'Roles inactivos';
         $data['script'] = 'rol_por_cat_inactivos.js';
-        $data['categorias'] = $this->model->getdatos('categorias_danza');
+        $data['categorias'] = $this->model->getDatos('categorias_danza');
         $this->views->getView('rol_por_cat', 'inactivos', $data);
     }
 
-     public function listarinactivos()
+    public function listarinactivos()
     {
         $data = $this->model->getRol_por_cat(0);
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['acciones'] = '
-                <button class="btn btn-primary btn-sm" type="button" onclick="restaurarRol_por_cat(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-primary btn-sm" type="button" onclick="restaurarRol_por_cat(' . $data[$i]['id'] . ')"><i class="fas fa-undo"></i></button>
             ';
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         die();
     }
 
-    // Eliminar (cambio de estado)
+    // Restaurar rol
     public function restaurar($idRol_por_cat)
     {
-        if (isset($_GET)) {
-            if (is_numeric($idRol_por_cat)) {
-                $data = $this->model->eliminar(1, $idRol_por_cat);
-                if ($data == 1) {
-                    $res = array('msg' => 'ROL RESTAURADO', 'type' => 'success');
-                } else {
-                    $res = array('msg' => 'ERROR AL RESTAURAR', 'type' => 'error');
-                }
-            } else {
-                $res = array('msg' => 'ERROR DESCONOCIDO', 'type' => 'error');
-            }
+        if (is_numeric($idRol_por_cat)) {
+            $data = $this->model->eliminar(1, $idRol_por_cat);
+            $res = ($data == 1)
+                ? array('msg' => 'ROL RESTAURADO', 'type' => 'success')
+                : array('msg' => 'ERROR AL RESTAURAR', 'type' => 'error');
         } else {
             $res = array('msg' => 'ERROR DESCONOCIDO', 'type' => 'error');
         }
