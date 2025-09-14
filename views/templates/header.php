@@ -77,13 +77,10 @@
                         </div>
                     </div>
 
-                    <!-- MANTENIMIENTO -->
+                    <!-- MANTENIMIENTOS -->
                      <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Mantenimiento</a>
+                        <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Estudiantes</a>
                         <div class="me-2 dropdown-menu bg-transparent border-0">
-                            <!-- <a href="<?php echo BASE_URL . 'medidas'; ?>" class="dropdown-item">
-                                <i class="fas fa-ruler-combined me-2"></i> Medidas
-                            </a> -->
                             <a href="<?php echo BASE_URL . 'carreras'; ?>" class="dropdown-item">
                                 <i class="fas fa-graduation-cap me-2"></i> Carreras
                             </a>           
@@ -93,8 +90,11 @@
                     <!-- modulo comparsas -->
 
                      <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Comparsas</a>
+                        <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Danzas</a>
                         <div class="me-2 dropdown-menu bg-transparent border-0">
+                             <a href="<?php echo BASE_URL . 'comparsas'; ?>" class="dropdown-item">
+                                <i class="fas fa-graduation-cap me-2"></i> Comparsas
+                            </a>                                             
                              <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
                                 <i class="fas fa-graduation-cap me-2"></i> Cats. de Danza
                             </a>                                             

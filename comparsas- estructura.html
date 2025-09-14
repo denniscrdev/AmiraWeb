@@ -1,0 +1,171 @@
+¡Perfecto! Entonces vamos a hacerlo por etapas, enfocándonos primero en la Entrada Universitaria, y después podemos replicar la lógica para los demás eventos. Te propongo esta organización inicial basada en tus tablas actuales:
+
+1️⃣ Tablas necesarias para la Entrada Universitaria
+a) Carreras
+
+Ya la tienes, sirve para asociar comparsas o participantes a una carrera:
+
+CREATE TABLE carreras (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    sigla VARCHAR(20) NOT NULL,
+    delegado VARCHAR(100),
+    contacto VARCHAR(50),
+    mensaje TEXT,
+    estado TINYINT DEFAULT 1,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+b) Categorías de danza
+
+Define las danzas de la Entrada Universitaria (ej: Caporales, Tinku):
+
+CREATE TABLE categorias_danza (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(255),
+    max_integrantes INT DEFAULT NULL,
+    mensaje TEXT,
+    estado TINYINT DEFAULT 1,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+c) Roles por categoría de danza
+
+Define los roles dentro de cada comparsa/danza:
+
+CREATE TABLE roles_categoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    categoria_id INT NOT NULL,
+    nombre_rol VARCHAR(100) NOT NULL,  -- Ej: Danzarín, Banda, Figura
+    max_integrantes INT DEFAULT NULL,
+    mensaje TEXT,
+    estado TINYINT DEFAULT 1,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES categorias_danza(id) ON DELETE CASCADE
+);
+
+d) Comparsas
+
+Asocia cada carrera con una danza, responsable y número de integrantes:
+
+CREATE TABLE comparsas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_danza VARCHAR(100) NOT NULL,
+    carrera_id INT NOT NULL,
+    categoria_id INT NOT NULL,
+    responsable VARCHAR(100) NOT NULL,
+    contacto_responsable VARCHAR(50),
+    nro_integrantes INT DEFAULT 0,
+    mensaje VARCHAR(255),
+    estado TINYINT DEFAULT 1,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (carrera_id) REFERENCES carreras(id),
+    FOREIGN KEY (categoria_id) REFERENCES categorias_danza(id)
+);
+
+e) Integrantes de cada comparsa
+
+Para llevar el control de todos los participantes:
+
+CREATE TABLE integrantes_comparsa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    comparsa_id INT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    rol_id INT NOT NULL,
+    nro_documento VARCHAR(20),
+    contacto VARCHAR(50),
+    estado TINYINT DEFAULT 1,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (comparsa_id) REFERENCES comparsas(id),
+    FOREIGN KEY (rol_id) REFERENCES roles_categoria(id)
+);
+
+✅ Flujo lógico para Entrada Universitaria
+
+Registrar carreras.
+
+Registrar categorías de danza (Caporales, Tinku, etc.).
+
+Definir roles por categoría.
+
+Crear comparsas, asignando la carrera y la categoría de danza.
+
+Registrar integrantes en cada comparsa según su rol y cupos.
+
+Si quieres, puedo armar un SQL listo para phpMyAdmin con todas estas tablas ya creadas y con claves foráneas correctas para que empieces a probar el módulo de Entrada Universitaria.
+
+¿Quieres que haga eso ahora?
+
+Tú dijiste:
+dame un ejemplo de com funcionaria
+ChatGPT Plus
+
+¡Perfecto! Vamos a ver un ejemplo completo de cómo funcionaría el sistema para la Entrada Universitaria usando las tablas que definimos. Te mostraré con datos ficticios:
+
+1️⃣ Carreras
+
+Supongamos que tenemos estas carreras registradas:
+
+id	nombre	sigla
+1	Ingeniería Comercial	INGEC
+2	Ingeniería Industrial	INGIN
+2️⃣ Categorías de Danza
+
+Danzas de la Entrada Universitaria:
+
+id	nombre	max_integrantes
+1	Caporales	20
+2	Tinku	15
+3	Morenada	25
+3️⃣ Roles por categoría
+id	categoria_id	nombre_rol	max_integrantes
+1	1	Danzarines	15
+2	1	Guías	2
+3	2	Danzarines	10
+4	2	Banda	5
+5	3	Danzarines	20
+6	3	Figuras	3
+4️⃣ Comparsas
+
+Cada carrera se inscribe en una categoría de danza:
+
+id	nombre_danza	carrera_id	categoria_id	responsable	nro_integrantes
+1	Caporales Ing. Comercial	1	1	Andrea Carrizo	17
+2	Tinku Ing. Industrial	2	2	Juan Pérez	12
+
+Aquí nro_integrantes es la suma de todos los integrantes registrados.
+
+5️⃣ Integrantes de Comparsas
+id	comparsa_id	nombre	rol_id	nro_documento	contacto
+1	1	María López	1	12345678	76123456
+2	1	Carlos Rojas	1	87654321	76198765
+3	1	Luis Herrera	2	23456789	76111111
+4	2	Ana Gómez	3	34567890	76543210
+5	2	Pedro Fernández	4	45678901	76544321
+
+Así podemos llevar el control de quién pertenece a qué comparsa y en qué rol.
+
+🔹 Flujo de uso real
+
+Registro de carrera → Se agrega una nueva carrera en el sistema.
+
+Registro de categoría de danza → Se agregan las danzas que participarán en la Entrada Universitaria.
+
+Definir roles → Por ejemplo, “Danzarines” y “Guías” para Caporales.
+
+Inscribir comparsa → La carrera se inscribe en la danza y asigna un responsable.
+
+Agregar integrantes → Se agregan los estudiantes según los roles y cupos permitidos.
+
+Consultar y controlar → Se puede ver el total de integrantes por comparsa, roles ocupados y pendientes.
+
+Si quieres, puedo hacer un diagrama visual con todas las relaciones mostrando carreras, comparsas, categorías, roles e integrantes, para que lo veas más claro y cómo se relaciona todo.
+
+¿Quieres que haga ese diagrama?
+
+Tú dijiste:
+si
+ChatGPT Plus
+
+¡Perfecto! Te voy a mostrar un diagrama conceptual de cómo se organiza el módulo de Entrada Universitaria con todas las tablas y relaciones.
