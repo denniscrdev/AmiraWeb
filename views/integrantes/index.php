@@ -12,7 +12,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="nav_listar-tab" data-bs-toggle="pill"
                                     data-bs-target="#nav_listar" type="button" role="tab"
-                                    aria-controls="nav_listar" aria-selected="true">Carreras</button>
+                                    aria-controls="nav_listar" aria-selected="true">Integrantes</button>
                             </li>
                             <!-- tab-2 -->
                             <li class="nav-item" role="presentation">
@@ -23,14 +23,14 @@
                         </ul>
                         <!-- Enlace meidas inactivos -->
                         <div class="text-end">
-                            <a href="<?php echo BASE_URL . 'carreras/inactivos'; ?>"><i class="fas fa-trash text-danger me-2"></i>Carreras Inactivas</a>
+                            <a href="<?php echo BASE_URL . 'integrantes/inactivos'; ?>"><i class="fas fa-trash text-danger me-2"></i>Integrantes inactivos</a>
                         </div>
                     </div>
                     <!-- titulo -->
                     <hr class="mb-3 ">
                     <div class="contenedor-titulo">
                         <h3 class="#">
-                            <i class="fas fa-graduation-cap me-2"></i>Listado de Carreras
+                            <i class="fas fa-graduation-cap me-2"></i>Integrantes por agrupacion
                         </h3>
                     </div>
                     <hr class="mb-3">
@@ -41,12 +41,12 @@
                             <!-- PRIMER TAB -->
                             <div class="tab-pane fade active show" id="nav_listar" role="tabpanel" aria-labelledby="nav_listar-tab">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-dark text-center" id="tblCarreras" style="width: 100%;">
+                                    <table class="table table-bordered table-striped table-dark text-center" id="tblIntegrantes" style="width: 100%;">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th class="text-center">Nombre de la carrera</th>
-                                                <th class="text-center">Sigla</th>
-                                                <th class="text-center">Delegado</th>
+                                                <th class="text-center">Comparsa</th>
+                                                <th class="text-center">Rol</th>
+                                                <th class="text-center">Nombre</th>
                                                 <th class="text-center">Contacto</th>
                                                 <th class="text-center">Mensaje</th>
                                                 <th class="text-center">Acciones</th>
@@ -64,46 +64,50 @@
 
                                         <div class="row">
 
+                                            <!-- TODO comparsa a la que pertenece -->
+                                            <div class="col-lg-2 col-sm-6">
+                                                <label for="id_categoria" class="form-label mb-2">Agrupacion <span class="text-danger">*</span></label>
+                                                <select id="comparsa_id" name="comparsa_id" class="form-select">
+                                                    <option value="">Seleccionar</option>
+                                                    <?php foreach ($data['comparsas'] as $comparsa) { ?>
+                                                        <option value="<?php echo $comparsa['id']; ?>"><?php echo $comparsa['nombre_danza']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                                <span id="errorAgrupacion" class="text-danger"></span>
+                                            </div>
+
+                                            <!-- TODO Relación con el rol (Danzarín, Guía, Banda, etc.) -->
+                                            <div class="col-lg-2 col-sm-6">
+                                                <label for="id_categoria" class="form-label mb-2">Rol <span class="text-danger">*</span></label>
+                                                <select id="rol_id" name="rol_id" class="form-select">
+                                                    <option value="">Seleccionar</option>
+                                                    <?php foreach ($data['roles_categoria'] as $rol) { ?>
+                                                        <option value="<?php echo $rol['id']; ?>"><?php echo $rol['nombre']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                                <span id="errorRol" class="text-danger"></span>
+                                            </div>
+
                                             <!-- TODO Nombre -->
-                                            <div class="col-lg-6 col-sm-6">
-                                                <label for="nombre" class="form-label mb-2">Nombre</label>
+                                            <div class="col-lg-5 col-sm-6">
+                                                <label for="nombre" class="form-label mb-2">Nombre del integrante</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la carrera">
+                                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
                                                 </div>
                                                 <span id="errorNombre" class="text-danger"></span>
                                             </div>
 
-                                            <!-- TODO Sigla -->
-                                            <div class="col-lg-6 col-sm-6">
-                                                <label for="sigla" class="form-label mb-2">Sigla</label>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" id="sigla" name="sigla" placeholder="Ingrese la sigla de la carrera">
-                                                </div>
-                                                <span id="errorSigla" class="text-danger"></span>
-                                            </div>
-
-                                            <!-- TODO Delegado -->
-                                            <div class="col-lg-6 col-sm-6">
-                                                <label for="delegado" class="form-label mb-2">Delegado</label>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" id="delegado" name="delegado" placeholder="Ingrese el representante de la carrera">
-                                                </div>
-                                                <span id="errorDelegado" class="text-danger"></span>
-                                            </div>
-
-                                            <!--TODO Contacto -->
-                                            <div class="col-lg-6 col-sm-6">
+                                            <!-- TODO Teléfono o medio de contacto -->
+                                            <div class="col-lg-3 col-sm-6">
                                                 <label for="contacto" class="form-label mb-2">Contacto</label>
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="number" class="form-control" id="contacto" name="contacto" placeholder="Ingrese el Contacto del delegado">
+                                                    <span class="input-group-text"><i class="bi bi-people-fill"></i></span>
+                                                    <input type="number" class="form-control" id="contacto" name="contacto" placeholder="Número máximo de integrantes">
                                                 </div>
                                                 <span id="errorContacto" class="text-danger"></span>
-                                            </div>                                            
-                                            
+                                            </div>
+
                                             <!-- TODO Mensaje (opcional) -->
                                             <div class="col-lg-12 col-sm-12 mb-3">
                                                 <label for="mensaje" class="form-label text-white mb-2">Mensaje (opcional)</label>
@@ -113,7 +117,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="text-end">
                                             <button class="btn btn-danger" type="button" id="btnNuevo">Nuevo</button>
                                             <button class="btn btn-primary" type="submit" id="btnAccion">Registrar</button>

@@ -20,8 +20,8 @@ class Comparsas extends Controller
         $data = $this->model->getComparsas(1);
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['acciones'] = '
-                <button class="btn btn-primary btn-sm" type="button" onclick="editarComparsa(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-danger btn-sm" type="button" onclick="eliminarComparsa(' . $data[$i]['id'] . ')"><i class="fas fa-trash-alt"></i></button>
+                <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Eliminar Registro" type="button" onclick="eliminarComparsa(' . $data[$i]['id'] . ')"><i class="fas fa-trash-alt"></i></button>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="tooltip" title="Editar Registro" type="button" onclick="editarComparsa(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
             ';
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -39,7 +39,7 @@ class Comparsas extends Controller
         $nro_integrantes = intval($_POST['max_integrantes']);
         $mensaje = strClean($_POST['mensaje']);
 
-         if (empty($nombre_danza)) {
+        if (empty($nombre_danza)) {
             $res = ['msg' => 'El nombre de la danza es requerido', 'type' => 'warning'];
         } else if (empty($carrera_id) || $carrera_id <= 0) {
             $res = ['msg' => 'Debe seleccionar una carrera', 'type' => 'warning'];
@@ -111,7 +111,7 @@ class Comparsas extends Controller
         die();
     }
 
-    
+
     public function inactivos()
     {
         $data['title'] = 'Cartegorias Inactivas';

@@ -18,8 +18,8 @@ class Carreras extends Controller
         $data = $this->model->getCarreras(1);
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['acciones'] = '<div>
-            <button class="btn btn-danger" data-bs-toggle="tooltip" title="Eliminar Registro" type="button" onclick="eliminarCarrera(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
-            <button class="btn btn-info" data-bs-toggle="tooltip" title="Editar Registro" type="button" onclick="editarCarrera(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Eliminar Registro" type="button" onclick="eliminarCarrera(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-info btn-sm" data-bs-toggle="tooltip" title="Editar Registro" type="button" onclick="editarCarrera(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
             </div>';
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);

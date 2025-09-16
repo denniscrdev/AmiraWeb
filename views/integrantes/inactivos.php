@@ -18,16 +18,14 @@
                 <div class="card-body">
                     <div class="bg-secondary rounded h-100">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-dark text-center" id="tblComparsas" style="width: 100%;">
+                            <table class="table table-bordered table-striped table-dark text-center" id="tblIntegrantes" style="width: 100%;">
                                 <thead class="thead-light">
-                                    <th class="text-center">Nombre de la agrupacion</th> <!-- nombre_danza -->
-                                    <th class="text-center">Carrera</th> <!-- carrera_id → mostrar nombre -->
-                                    <th class="text-center">Categoría de Danza</th> <!-- categoria_id → mostrar nombre -->
-                                    <th class="text-center">Responsable</th> <!-- responsable -->
-                                    <th class="text-center">Contacto</th> <!-- contacto_responsable -->
-                                    <th class="text-center">Integrantes</th> <!-- nro_integrantes / max_integrantes -->
-                                    <th class="text-center">Mensaje</th> <!-- mensaje -->
-                                    <th class="text-center">Acciones</th> <!-- Editar / Eliminar / Ver integrantes -->
+                                    <th class="text-center">Comparsa</th>
+                                    <th class="text-center">Rol</th>
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Contacto</th>
+                                    <th class="text-center">Mensaje</th>
+                                    <th class="text-center">Acciones</th>
                                 </thead>
                             </table>
                         </div>

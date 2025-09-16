@@ -63,7 +63,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="<?php echo BASE_URL . 'admin'; ?>" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    
+
                     <!-- ADMINISTRACION -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Administración</a>
@@ -73,34 +73,37 @@
                             </a>
                             <a href="<?php echo BASE_URL . 'admin/datos'; ?>" class="dropdown-item">
                                 <i class="fa fa-cog me-2"></i> Configuración
-                            </a>                           
+                            </a>
                         </div>
                     </div>
 
-                    <!-- MANTENIMIENTOS -->
-                     <div class="nav-item dropdown">
+                    <!-- MANTENIMIENTO ESTUDIANTES -->
+                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Estudiantes</a>
                         <div class="me-2 dropdown-menu bg-transparent border-0">
                             <a href="<?php echo BASE_URL . 'carreras'; ?>" class="dropdown-item">
                                 <i class="fas fa-graduation-cap me-2"></i> Carreras
-                            </a>           
+                            </a>
                         </div>
                     </div>
 
-                    <!-- modulo comparsas -->
+                    <!-- MANTENIMIENTO DANZAS -->
 
-                     <div class="nav-item dropdown">
+                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Danzas</a>
                         <div class="me-2 dropdown-menu bg-transparent border-0">
-                             <a href="<?php echo BASE_URL . 'comparsas'; ?>" class="dropdown-item">
-                                <i class="fas fa-graduation-cap me-2"></i> Comparsas
-                            </a>                                             
-                             <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
-                                <i class="fas fa-graduation-cap me-2"></i> Cats. de Danza
-                            </a>                                             
-                             <a href="<?php echo BASE_URL . 'rol_por_cat'; ?>" class="dropdown-item">
-                                <i class="fas fa-graduation-cap me-2"></i> Roles por Cat.
-                            </a>                                             
+                            <a href="<?php echo BASE_URL . 'comparsas'; ?>" class="dropdown-item">
+                                <i class="fas fa-user-friends me-2"></i> Agrupaciones
+                            </a>
+                            <a href="<?php echo BASE_URL . 'integrantes'; ?>" class="dropdown-item">
+                                <i class="fas fa-user-plus me-2"></i> Integrantes
+                            </a>
+                            <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
+                                <i class="fas fa-graduation-cap me-2"></i> Categorias
+                            </a>
+                            <a href="<?php echo BASE_URL . 'rol_por_cat'; ?>" class="dropdown-item">
+                                <i class="fas fa-graduation-cap me-2"></i> Roles.
+                            </a>
                         </div>
                     </div>
 
@@ -219,4 +222,3 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-             

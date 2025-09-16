@@ -12,7 +12,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="nav_listar-tab" data-bs-toggle="pill"
                                     data-bs-target="#nav_listar" type="button" role="tab"
-                                    aria-controls="nav_listar" aria-selected="true">Categorias de Danza</button>
+                                    aria-controls="nav_listar" aria-selected="true">Agrupaciones</button>
                             </li>
                             <!-- tab-2 -->
                             <li class="nav-item" role="presentation">
@@ -23,14 +23,14 @@
                         </ul>
                         <!-- Enlace meidas inactivos -->
                         <div class="text-end">
-                            <a href="<?php echo BASE_URL . 'comparsas/inactivos'; ?>"><i class="fas fa-trash text-danger me-2"></i>Comparsas Inactivas</a>
+                            <a href="<?php echo BASE_URL . 'comparsas/inactivos'; ?>"><i class="fas fa-trash text-danger me-2"></i>Agrupaciones Inactivas</a>
                         </div>
                     </div>
                     <!-- titulo -->
                     <hr class="mb-3 ">
                     <div class="contenedor-titulo">
                         <h3 class="#">
-                            <i class="fas fa-graduation-cap me-2"></i>Lista de comparsas
+                            <i class="fas fa-graduation-cap me-2"></i>Lista de Agrupaciones
                         </h3>
                     </div>
                     <hr class="mb-3">
@@ -44,7 +44,7 @@
                                     <table class="table table-bordered table-striped table-dark text-center" id="tblComparsas" style="width: 100%;">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th class="text-center">Nombre de la Comparsa</th> <!-- nombre_danza -->
+                                                <th class="text-center">Nombre de la agrupacion</th> <!-- nombre_danza -->
                                                 <th class="text-center">Carrera</th> <!-- carrera_id → mostrar nombre -->
                                                 <th class="text-center">Categoría de Danza</th> <!-- categoria_id → mostrar nombre -->
                                                 <th class="text-center">Responsable</th> <!-- responsable -->
