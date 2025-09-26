@@ -33,7 +33,7 @@ class Rol_por_cat extends Controller
         $id = strClean($_POST['id']);
         $id_categoria = strClean($_POST['id_categoria']);
         $nombre = strClean($_POST['nombre']);
-        $descripcion = strClean($_POST['descripcion']);
+        $precio = strClean($_POST['precio']);
         $max_integrantes = (int) strClean($_POST['max_integrantes']);
         $mensaje = strClean($_POST['mensaje']);
 
@@ -52,7 +52,7 @@ class Rol_por_cat extends Controller
                     // Nuevo registro
                     $verificar = $this->model->getValidar($nombre, $id_categoria, 'registrar', 0);
                     if (empty($verificar)) {
-                        $data = $this->model->registrar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje);
+                        $data = $this->model->registrar($id_categoria, $nombre, $precio, $max_integrantes, $mensaje);
                         $res = ($data > 0)
                             ? array('msg' => 'ROL REGISTRADO', 'type' => 'success')
                             : array('msg' => 'ERROR AL REGISTRAR', 'type' => 'error');
@@ -63,7 +63,7 @@ class Rol_por_cat extends Controller
                     // Actualizar registro
                     $verificar = $this->model->getValidar($nombre, $id_categoria, 'actualizar', $id);
                     if (empty($verificar)) {
-                        $data = $this->model->actualizar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje, $id);
+                        $data = $this->model->actualizar($id_categoria, $nombre, $precio, $max_integrantes, $mensaje, $id);
                         $res = ($data == 1)
                             ? array('msg' => 'ROL MODIFICADO', 'type' => 'success')
                             : array('msg' => 'ERROR AL MODIFICAR', 'type' => 'error');

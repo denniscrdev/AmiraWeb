@@ -6,13 +6,13 @@ const formulario = document.querySelector('#formulario');
 const id = document.querySelector('#id');
 const id_categoria = document.querySelector('#id_categoria');
 const nombre = document.querySelector('#nombre');
-const descripcion = document.querySelector('#descripcion');
+const precio = document.querySelector('#precio');
 const max_integrantes = document.querySelector('#max_integrantes');
 const mensaje = document.querySelector('#mensaje');
 
 const errorCategoria = document.querySelector('#errorCategoria');
 const errorNombre = document.querySelector('#errorNombre');
-const errorDescripcion = document.querySelector('#errorDescripcion');
+const errorPrecio = document.querySelector('#errorPrecio');
 const errorIntegrantes = document.querySelector('#errorIntegrantes');
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         columns: [
             { data: 'categoria' },
             { data: 'nombre' },
-            { data: 'descripcion' },
+            { data: 'precio' },
             { data: 'max_integrantes' },
             { data: 'mensaje' },
             { data: 'acciones' }
@@ -52,15 +52,15 @@ document.addEventListener('DOMContentLoaded', function () {
         // Reset errores
         errorCategoria.textContent = '';
         errorNombre.textContent = '';
-        errorDescripcion.textContent = '';
+        errorPrecio.textContent = '';
         errorIntegrantes.textContent = '';
 
         if (id_categoria.value === '') {
             errorCategoria.textContent = 'Debe seleccionar una categoría';
         } else if (nombre.value.trim() === '') {
             errorNombre.textContent = 'El nombre es requerido';
-        } else if (descripcion.value.trim() === '') {
-            errorDescripcion.textContent = 'La descripción es requerida';
+        } else if (precio.value.trim() === '') {
+            errorPrecio.textContent = 'La descripción es requerida';
         } else if (max_integrantes.value === '' || max_integrantes.value <= 0) {
             errorIntegrantes.textContent = 'Debe ingresar un número mayor a 0';
         } else {
@@ -88,7 +88,7 @@ function editarRol_por_cat(idRol_por_cat) {
             id.value = res.id;
             id_categoria.value = res.id_categoria;
             nombre.value = res.nombre;
-            descripcion.value = res.descripcion;
+            precio.value = res.precio;
             max_integrantes.value = res.max_integrantes;
             mensaje.value = res.mensaje;
             btnAccion.textContent = 'Actualizar';

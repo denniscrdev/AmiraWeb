@@ -23,21 +23,21 @@ class Rol_por_catModel extends Query
     }
 
     // Registrar un nuevo rol
-    public function registrar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje)
+    public function registrar($id_categoria, $nombre, $precio, $max_integrantes, $mensaje)
     {
-        $sql = "INSERT INTO roles_categoria (id_categoria, nombre, descripcion, max_integrantes, mensaje) 
+        $sql = "INSERT INTO roles_categoria (id_categoria, nombre, precio, max_integrantes, mensaje) 
                 VALUES (?,?,?,?,?)";
-        $datos = array($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje);
+        $datos = array($id_categoria, $nombre, $precio, $max_integrantes, $mensaje);
         return $this->insertar($sql, $datos);
     }
 
     // Actualizar un rol existente
-    public function actualizar($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje, $id)
+    public function actualizar($id_categoria, $nombre, $precio, $max_integrantes, $mensaje, $id)
     {
         $sql = "UPDATE roles_categoria 
-                SET id_categoria=?, nombre=?, descripcion=?, max_integrantes=?, mensaje=? 
+                SET id_categoria=?, nombre=?, precio=?, max_integrantes=?, mensaje=? 
                 WHERE id=?";
-        $array = array($id_categoria, $nombre, $descripcion, $max_integrantes, $mensaje, $id);
+        $array = array($id_categoria, $nombre, $precio, $max_integrantes, $mensaje, $id);
         return $this->save($sql, $array);
     }
 

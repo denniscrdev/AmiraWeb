@@ -47,7 +47,7 @@
                                             <tr>
                                                 <th class="text-center">Categoria</th>
                                                 <th class="text-center">Rol</th>
-                                                <th class="text-center">Descripción</th>
+                                                <th class="text-center">Precio del rol</th>
                                                 <th class="text-center">Máx. Integrantes</th>
                                                 <th class="text-center">Mensaje</th>
                                                 <th class="text-center">Acciones</th>
@@ -92,14 +92,14 @@
                                                 <span id="errorNombre" class="text-danger"></span>
                                             </div>
 
-                                            <!-- TODO Descripción -->
+                                            <!-- TODO Precio de rol -->
                                             <div class="col-lg-3 col-sm-6">
-                                                <label for="descripcion" class="form-label mb-2">Descripción</label>
+                                                <label for="precio" class="form-label mb-2">Precio del rol</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="fas fa-align-left"></i></span>
-                                                    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese una descripción">
+                                                    <input type="number" step="0.01" min="0.01" class="form-control" id="precio" name="precio" placeholder="Ingrese el precio del rol">
                                                 </div>
-                                                <span id="errorDescripcion" class="text-danger"></span>
+                                                <span id="errorPrecio" class="text-danger"></span>
                                             </div>
 
                                             <!-- TODO Máx. Integrantes -->

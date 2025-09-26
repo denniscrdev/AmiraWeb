@@ -89,42 +89,46 @@
 
                     <!-- MANTENIMIENTO DANZAS -->
 
-                    <div class="nav-item dropdown">
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Danzas</a>
                         <div class="me-2 dropdown-menu bg-transparent border-0">
+                            <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
+                                <i class="fas fa-graduation-cap me-2"></i> Categorias
+                            </a>
+                             <a href="<?php echo BASE_URL . 'rol_por_cat'; ?>" class="dropdown-item">
+                                <i class="fas fa-graduation-cap me-2"></i> Roles.
+                            </a>
                             <a href="<?php echo BASE_URL . 'comparsas'; ?>" class="dropdown-item">
                                 <i class="fas fa-user-friends me-2"></i> Agrupaciones
                             </a>
                             <a href="<?php echo BASE_URL . 'integrantes'; ?>" class="dropdown-item">
                                 <i class="fas fa-user-plus me-2"></i> Integrantes
                             </a>
-                            <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
-                                <i class="fas fa-graduation-cap me-2"></i> Categorias
-                            </a>
-                            <a href="<?php echo BASE_URL . 'rol_por_cat'; ?>" class="dropdown-item">
-                                <i class="fas fa-graduation-cap me-2"></i> Roles.
-                            </a>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Clientes</a>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Proveedores</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Cajas</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Compras</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Ventas</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Creditos</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Cotizaciones</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Apartados</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Inventario</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <!-- <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="dropdown-item">
+                        <i class="fas fa-clipboard-list me-2"></i> Categorias
+                    </a>
+                    <a href="<?php echo BASE_URL . 'rol_por_cat'; ?>" class="dropdown-item">
+                        <i class="fas fa-graduation-cap me-2"></i> Roles.
+                    </a>
+                    <a href="<?php echo BASE_URL . 'comparsas'; ?>" class="dropdown-item">
+                        <i class="fas fa-user-friends me-2"></i> Agrupaciones
+                    </a>
+                    <a href="<?php echo BASE_URL . 'integrantes'; ?>" class="dropdown-item">
+                        <i class="fas fa-user-plus me-2"></i> Integrantes
+                    </a> -->
+
+                    <!-- categorias de danza -->
+                    <a href="<?php echo BASE_URL . 'cate_danza'; ?>" class="nav-item nav-link"><i class="fas fa-clipboard-list me-2"></i>Categorias</a>
+                    <!-- roles de categoria -->
+                    <a href="<?php echo BASE_URL . 'rol_por_cat'; ?>" class="nav-item nav-link"><i class="fas fa-spinner me-2"></i> Roles</a>
+                    <!-- agrupaciones de categoria -->
+                    <a href="<?php echo BASE_URL . 'comparsas'; ?>" class="nav-item nav-link"><i class="fas fa-shoe-prints me-2"></i>Agrupaciones</a>
+                    <!-- inscriocones de alumnos -->
+                    <a href="<?php echo BASE_URL . 'integrantes'; ?>" class="nav-item nav-link"><i class="fas fa-user-plus me-2"></i>Inscripciones</a>
+                    
                 </div>
             </nav>
         </div>

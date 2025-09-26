@@ -1,0 +1,55 @@
+
+
+header .container {
+  padding-top: 35px;
+}
+/* Logo */
+.header-logo {
+  max-height: 72px;    /* ajusta según prefieras */
+  width: auto;
+  display: block;
+}
+
+/* Buscador */
+.header-search {
+  height: 44px;
+  padding: 0 1rem;
+}
+.header-search-btn {
+  height: 44px;
+  padding: 0 1rem;
+}
+
+/* Carrito */
+.btn-cart {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.cart-info small { font-size: 0.8rem; }
+
+/* Ajustes responsive */
+@media (max-width: 575.98px) {
+  .header-logo { max-height: 56px; }
+  .header-search { height: 40px; font-size: 0.9rem; }
+  .cart-info { display: none; } /* oculta texto del carrito en móviles para ahorrar espacio */
+}
+
+/* Styling opcional para la clase .templateColor si la usas */
+.templateColor {
+  background-color: #e74c3c; /* reemplaza con tu color */
+  color: #fff;
+}
+
+/* Asegura que los dropdowns anidados no se salgan del flujo */
+.dropdown-menu .dropdown-menu {
+  left: 100%;
+  top: 0;
+  margin-left: .1rem;
+}
+
+/* Evita saltos: elimina padding enorme en imagenes si existía */
+.brand-image { padding: 0 !important; margin: 0 !important; }

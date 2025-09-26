@@ -1,0 +1,16 @@
+.topbar {
+  width: 50% !important; /* garantiza que cubra todo */
+  left: 0;
+  right: 0;
+  position: relative; /* puedes cambiar a fixed si quieres que flote */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 1050;
+}
+
+.topbar a {
+  transition: 0.3s;
+}
+
+.topbar a:hover {
+  color: #dc3545 !important;
+}
