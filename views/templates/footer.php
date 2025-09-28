@@ -27,6 +27,7 @@
     <script src="<?php echo BASE_URL; ?>assets/js/plugins/notiflix-3.2.6.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/botones-perzonalizados.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/ckeditor.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/dashboard.js"></script>
     <script>
         const base_url = '<?php echo BASE_URL; ?>';
     </script>

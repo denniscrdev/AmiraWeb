@@ -1,6 +1,6 @@
 <!-- Topbar Start -->
 <nav class="navbar navbar-dark bg-dark shadow-sm fixed-top py-2">
-  <div class="container-fluid d-flex justify-content-between align-items-center">
+  <div class="container d-flex justify-content-between align-items-center">
 
     <!-- Redes sociales -->
     <div class="d-flex gap-3">

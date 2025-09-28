@@ -10,6 +10,7 @@ class Admin extends Controller {
     {
         $data['title'] = 'Panel Administrativo';
         // $data['script'] = 'main.js';
+        $data['usuarios'] = $this->model->getTotales('usuarios');;
         $this->views->getView('admin', 'home', $data);  
     }
     //datos de la empresa

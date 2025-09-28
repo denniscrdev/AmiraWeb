@@ -17,5 +17,10 @@ class AdminModel extends Query{
         $direccion, $impuesto, $mensaje, $id);
         return $this->save($sql, $array);
     }
+    public function getTotales($table)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM $table WHERE estado  = 1";
+        return $this->select($sql);
+    }
 }
 ?>

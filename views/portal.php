@@ -36,6 +36,7 @@
     <link href="<?php echo BASE_URL; ?>assets/css/portal/top.css" rel="stylesheet">
     <link href="<?php echo BASE_URL; ?>assets/css/portal/header.css" rel="stylesheet">
     <link href="<?php echo BASE_URL; ?>assets/portal/css/slider.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>assets/portal/css/noticias.css" rel="stylesheet">
 </head>
 
 <body>
@@ -63,7 +64,10 @@
 
         <?php
         include "portal/slide.php";
+        include "portal/banner.php";
+        include "portal/noticias.php";
         include "portal/carrusel.php";
+        include "portal/footer.php";
         ?>
 
     </div>

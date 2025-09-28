@@ -32,6 +32,7 @@
     <link href="<?php echo BASE_URL; ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo BASE_URL; ?>assets/css/tablas.css" rel="stylesheet">
     <link href="<?php echo BASE_URL; ?>assets/css/plugins/notiflix-3.2.6.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>assets/css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -127,8 +128,10 @@
                     <!-- agrupaciones de categoria -->
                     <a href="<?php echo BASE_URL . 'comparsas'; ?>" class="nav-item nav-link"><i class="fas fa-shoe-prints me-2"></i>Agrupaciones</a>
                     <!-- inscriocones de alumnos -->
-                    <a href="<?php echo BASE_URL . 'integrantes'; ?>" class="nav-item nav-link"><i class="fas fa-user-plus me-2"></i>Inscripciones</a>
-                    
+                    <!-- <a href="<?php echo BASE_URL . 'integrantes'; ?>" class="nav-item nav-link"><i class="fas fa-user-plus me-2"></i>Inscripciones</a> -->
+                    <!-- categorias de danza -->
+                    <a href="<?php echo BASE_URL . 'tallas'; ?>" class="nav-item nav-link"><i class="fas fa-clipboard-list me-2"></i>Tallas</a>
+                    <!-- roles de categoria -->
                 </div>
             </nav>
         </div>
